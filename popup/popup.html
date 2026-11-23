@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TTD Pilgrim Autofill</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <img src="../icons/icon-48.png" alt="" width="28" height="28" />
+      <h1>TTD Pilgrim Autofill</h1>
+      <span id="page-status" class="status"></span>
+    </header>
+
+    <button id="grant-access" class="primary grant" hidden>🔓 Allow access to TTD sites (required in Firefox)</button>
+
+    <nav id="tabs">
+      <button data-tab="pilgrims" class="active">🛕 Pilgrims</button>
+      <button data-tab="srivani">🪔 Srivani</button>
+      <button data-tab="seva">🙏 Seva</button>
+      <button data-tab="settings">⚙</button>
+    </nav>
+
+    <main>
+      <section id="tab-pilgrims" class="tab active">
+        <div class="actions">
+          <button id="fill-pilgrims" class="primary">⚡ Fill All</button>
+          <button id="fill-pilgrims-continue" class="primary alt">⚡ Fill &amp; Continue</button>
+        </div>
+        <h2>Pilgrims <span id="pilgrim-count"></span></h2>
+        <ul id="pilgrim-list" class="list"></ul>
+        <details id="pilgrim-editor">
+          <summary id="pilgrim-editor-title">➕ Add pilgrim</summary>
+          <form id="pilgrim-form" class="form"></form>
+        </details>
+        <details>
+          <summary>📮 General / contact details</summary>
+          <form id="contact-form" class="form"></form>
+          <div class="actions">
+            <button id="fill-contact">Fill contact only</button>
+          </div>
+        </details>
+      </section>
+
+      <section id="tab-srivani" class="tab">
+        <div class="actions">
+          <button id="fill-srivani" class="primary">⚡ Fill Srivani Details</button>
+        </div>
+        <h2>Members <span id="srivani-count"></span></h2>
+        <ul id="srivani-list" class="list"></ul>
+        <details id="srivani-editor">
+          <summary id="srivani-editor-title">➕ Add member</summary>
+          <form id="srivani-form" class="form"></form>
+        </details>
+        <details>
+          <summary>📅 Advance booking (darshan date, laddus, accommodation)</summary>
+          <form id="srivani-advance-form" class="form"></form>
+        </details>
+      </section>
+
+      <section id="tab-seva" class="tab">
+        <p class="hint">One profile per sevak. In group forms, profile #N fills the N-th sevak block on the page.</p>
+        <ul id="sevak-list" class="list"></ul>
+        <details id="sevak-editor">
+          <summary id="sevak-editor-title">➕ Add sevak profile</summary>
+          <form id="sevak-form" class="form"></form>
+        </details>
+      </section>
+
+      <section id="tab-settings" class="tab">
+        <form id="settings-form" class="form"></form>
+        <h2>Backup</h2>
+        <div class="actions">
+          <button id="export">Export JSON</button>
+          <label class="button">Import JSON<input id="import" type="file" accept="application/json" hidden /></label>
+          <button id="clear-all" class="danger">Delete all data</button>
+        </div>
+        <p class="hint">All data is stored only in this browser's extension storage. Nothing is sent anywhere.</p>
+      </section>
+    </main>
+
+    <div id="toast" role="status"></div>
+    <script src="schema.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
